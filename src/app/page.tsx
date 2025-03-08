@@ -276,11 +276,13 @@ const SeoulLandingPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Food card 1 */}
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="h-56 overflow-hidden">
-                  <img
+                <div className="h-56 overflow-hidden relative">
+                  <Image
                     src="https://images.unsplash.com/photo-1590301157890-4810ed352733?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                     alt="한국의 삼겹살"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="p-6">
@@ -297,11 +299,13 @@ const SeoulLandingPage = () => {
 
               {/* Food card 2 */}
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="h-56 overflow-hidden">
-                  <img
+                <div className="h-56 overflow-hidden relative">
+                  <Image
                     src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
                     alt="명동 길거리 음식"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="p-6">
@@ -318,11 +322,13 @@ const SeoulLandingPage = () => {
 
               {/* Food card 3 */}
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="h-56 overflow-hidden">
-                  <img
+                <div className="h-56 overflow-hidden relative">
+                  <Image
                     src="https://images.unsplash.com/photo-1532347231146-80afc9e3df2b"
                     alt="현대적인 한식"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="p-6">
@@ -388,10 +394,12 @@ const SeoulLandingPage = () => {
                 </button>
               </div>
               <div className="w-full lg:w-1/2 h-96 md:h-[500px] rounded-2xl overflow-hidden">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1584592740039-cddf0671f3d4"
                   alt="동대문디자인플라자"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
