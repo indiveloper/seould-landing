@@ -14,10 +14,9 @@ const nextConfig = {
       },
     ],
   },
-  output: 'standalone',
+  // output: 'standalone', // Vercel 배포를 위해 주석 처리
   trailingSlash: true,
   poweredByHeader: false,
-  productionBrowserSourceMaps: false,
 };
 
 module.exports = nextConfig; 
