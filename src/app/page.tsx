@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { ReactNode, useEffect, useState } from 'react';
 
 // 클라이언트 사이드에서만 렌더링하는 컴포넌트
@@ -176,10 +177,13 @@ const SeoulLandingPage = () => {
         >
           {/* Background image */}
           <div className="absolute inset-0 z-0">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1538669715315-155098f0fb1d"
               alt="서울 남산타워 야경"
-              className="w-full h-full object-cover object-center"
+              className="object-cover object-center"
+              fill
+              priority
+              sizes="100vw"
             />
           </div>
 
@@ -189,7 +193,7 @@ const SeoulLandingPage = () => {
               Discover the Soul<br />of <span className="text-red-400">Seoul</span>
             </h1>
             <p className={`text-lg md:text-xl max-w-2xl mx-auto mb-12 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} transition-all duration-1000 delay-300`}>
-              Where ancient traditions meet cutting-edge innovation in Asia's most dynamic city
+              Where ancient traditions meet cutting-edge innovation in Asia&apos;s most dynamic city
             </p>
             <div className={`flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} transition-all duration-1000 delay-500`}>
               <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium shadow-lg hover:shadow-xl hover:bg-red-600 transition-all">
@@ -216,7 +220,7 @@ const SeoulLandingPage = () => {
                 <span className="text-red-500 font-medium mb-2 block">Heritage</span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Cultural Wonders at Every Corner</h2>
                 <p className="text-gray-600 text-lg mb-8">
-                  Seoul's rich 2,000-year history is preserved in its magnificent palaces, traditional temples, and vibrant cultural districts. Wander through time in a city where the past harmoniously blends with the future.
+                  Seoul&apos;s rich 2,000-year history is preserved in its magnificent palaces, traditional temples, and vibrant cultural districts. Wander through time in a city where the past harmoniously blends with the future.
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start">
@@ -244,11 +248,15 @@ const SeoulLandingPage = () => {
                 </button>
               </div>
               <div className="w-full lg:w-1/2 h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                  alt="경복궁 전경"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                    alt="경복궁 전경"
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -261,7 +269,7 @@ const SeoulLandingPage = () => {
               <span className="text-red-500 font-medium mb-2 block">Cuisine</span>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">A Culinary Journey</h2>
               <p className="text-gray-600 text-lg">
-                Seoul's food scene is a vibrant tapestry of flavors, from traditional Korean dishes to innovative fusion cuisine. Discover why this city is becoming a global culinary destination.
+                Seoul&apos;s food scene is a vibrant tapestry of flavors, from traditional Korean dishes to innovative fusion cuisine. Discover why this city is becoming a global culinary destination.
               </p>
             </div>
 
@@ -299,7 +307,7 @@ const SeoulLandingPage = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">Street Food Markets</h3>
                   <p className="text-gray-600 mb-4">
-                    Dive into Seoul's vibrant street food culture at historic markets offering everything from bindaetteok to tteokbokki.
+                    Dive into Seoul&apos;s vibrant street food culture at historic markets offering everything from bindaetteok to tteokbokki.
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
                     <span className="mr-4">Gwangjang Market</span>
@@ -403,25 +411,33 @@ const SeoulLandingPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="col-span-1 md:col-span-2 h-80 rounded-2xl overflow-hidden relative group">
-                <img
-                  src="https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt="한강공원 야경"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="한강공원 야경"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">Han River Parks</h3>
                   <p className="text-white/80">
-                    11 parks along Seoul's iconic river offer cycling paths, water sports, and picnic spots.
+                    11 parks along Seoul&apos;s iconic river offer cycling paths, water sports, and picnic spots.
                   </p>
                 </div>
               </div>
 
               <div className="col-span-1 h-80 rounded-2xl overflow-hidden relative group">
-                <img
-                  src="https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt="북한산 국립공원"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="북한산 국립공원"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
                   <h3 className="text-xl font-bold mb-2">Mountain Escapes</h3>
                   <p className="text-white/80">
@@ -431,11 +447,15 @@ const SeoulLandingPage = () => {
               </div>
 
               <div className="col-span-1 h-80 rounded-2xl overflow-hidden relative group">
-                <img
-                  src="https://images.pexels.com/photos/1109354/pexels-photo-1109354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt="서울숲 공원"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="https://images.pexels.com/photos/1109354/pexels-photo-1109354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="서울숲 공원"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
                   <h3 className="text-xl font-bold mb-2">Urban Forests</h3>
                   <p className="text-white/80">
@@ -445,11 +465,15 @@ const SeoulLandingPage = () => {
               </div>
 
               <div className="col-span-1 md:col-span-2 h-80 rounded-2xl overflow-hidden relative group">
-                <img
-                  src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16"
-                  alt="청계천 야경"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16"
+                    alt="청계천 야경"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">Cheonggyecheon Stream</h3>
                   <p className="text-white/80">
@@ -492,7 +516,7 @@ const SeoulLandingPage = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1">Getting Around</h3>
                       <p className="text-gray-600">
-                        Seoul's world-class subway system connects all major attractions with English signage throughout. T-money cards make transportation seamless.
+                        Seoul&apos;s world-class subway system connects all major attractions with English signage throughout. T-money cards make transportation seamless.
                       </p>
                     </div>
                   </div>
@@ -539,7 +563,7 @@ const SeoulLandingPage = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="interests" className="block text-sm font-medium text-gray-700 mb-1">I'm interested in</label>
+                    <label htmlFor="interests" className="block text-sm font-medium text-gray-700 mb-1">I&apos;m interested in</label>
                     <select
                       id="interests"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
@@ -573,7 +597,7 @@ const SeoulLandingPage = () => {
                   <h2 className="text-xl font-medium text-white">Seoul Explorer</h2>
                 </div>
                 <p className="text-gray-400 mb-6">
-                  Your guide to discovering the vibrant soul of South Korea's capital city.
+                  Your guide to discovering the vibrant soul of South Korea&apos;s capital city.
                 </p>
                 <div className="flex space-x-4">
                   <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-500 transition-colors">
