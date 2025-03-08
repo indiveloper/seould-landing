@@ -13,7 +13,15 @@ const ClientOnly = ({ children }: { children: ReactNode }) => {
   }, []);
 
   if (!hasMounted) {
-    return <div className="min-h-screen bg-white"></div>; // 로딩 중 빈 화면 대신 기본 배경 표시
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center">
+          <div className="w-16 h-16 bg-seoul-blue-500 rounded-full mb-4"></div>
+          <div className="h-4 w-32 bg-gray-200 rounded mb-2"></div>
+          <div className="h-3 w-24 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    );
   }
 
   return <>{children}</>;
