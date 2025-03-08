@@ -15,6 +15,9 @@ const nextConfig = {
     ],
   },
   output: 'standalone',
+  trailingSlash: true,
+  poweredByHeader: false,
+  productionBrowserSourceMaps: false,
 };
 
 module.exports = nextConfig; 
