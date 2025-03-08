@@ -9,43 +9,58 @@ const SeoulLandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentYear, setCurrentYear] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+    // 현재 연도 설정
+    setCurrentYear(new Date().getFullYear().toString());
 
-      // Determine active section based on scroll position
-      const sections = ['hero', 'culture', 'food', 'tech', 'nature', 'visit'];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
+    const handleScroll = () => {
+      if (typeof window !== 'undefined') {
+        setScrollY(window.scrollY);
+
+        // Determine active section based on scroll position
+        const sections = ['hero', 'culture', 'food', 'tech', 'nature', 'visit'];
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
+
+        // Check for elements to animate on scroll
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = (rect.top <= window.innerHeight * 0.8);
+
+          if (isVisible) {
+            el.classList.add('is-visible');
+          }
+        });
       }
-
-      // Check for elements to animate on scroll
-      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        const isVisible = (rect.top <= window.innerHeight * 0.8);
-
-        if (isVisible) {
-          el.classList.add('is-visible');
-        }
-      });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      // 초기 스크롤 위치 설정
+      handleScroll();
+    }
 
     // Set loaded state after a short delay to trigger animations
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
+      clearTimeout(timer);
+    };
   }, []);
 
   const toggleMobileMenu = () => {
@@ -53,14 +68,16 @@ const SeoulLandingPage = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth'
-      });
+    if (typeof window !== 'undefined') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+      setMobileMenuOpen(false);
     }
-    setMobileMenuOpen(false);
   };
 
   // Navigation items
@@ -642,7 +659,7 @@ const SeoulLandingPage = () => {
 
           <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-neutral-500 text-sm mb-4 md:mb-0 font-light">
-              © {new Date().getFullYear()} Seoul Explorer. All rights reserved.
+              © {currentYear} Seoul Explorer. All rights reserved.
             </p>
             <div className="flex space-x-8">
               <a href="#" className="text-neutral-500 hover:text-white text-sm transition-colors font-light">Privacy Policy</a>
